@@ -3,4 +3,6 @@ title: 'New website, that I am making'
 layout: 'base.njk'
 ---
 
-Content - Generated Pretty neat
+# Fresh content
+
+Rebuilding my site on 11ty and hosting on github pages
