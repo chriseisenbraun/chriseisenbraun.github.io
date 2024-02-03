@@ -20,10 +20,34 @@ h1 {
     font-weight: 30;
 }
 
+.page-wrap {
+    display: grid;
+    justify-content: center;
+    padding: 1rem;
+
+}
+
 .flex {
     display: flex;
+    flex-direction: column;
 }
 
 .flex li {
-    margin-inline-end: 1rem;
+    margin-block-end: .5rem;
+
+}
+
+@media screen and (min-width: 768px) {
+    .page-wrap {
+        padding: 0;
+    }
+
+    .flex {
+        flex-direction: row;
+    }
+
+    .flex li {
+        margin-inline-end: 1rem;
+    }
+
 }
