@@ -1,0 +1,29 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #efe8e8ee;
+    color: #222;
+}
+
+h1 {
+    font-weight: 30;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex li {
+    margin-inline-end: 1rem;
+}
