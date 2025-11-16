@@ -365,6 +365,20 @@ a:focus {
 }
 
 /* ========================================
+   Neon Theme - Glow Effects
+   ======================================== */
+
+[data-theme="tron"] h1,
+[data-theme="tron"] h2,
+[data-theme="tron"] h3,
+[data-theme="tron"] .section__number,
+[data-theme="tron"] .sidebar__nav a {
+    text-shadow:
+        0 0 20px currentColor,
+        0 0 40px currentColor;
+}
+
+/* ========================================
    Responsive Design
    ======================================== */
 
