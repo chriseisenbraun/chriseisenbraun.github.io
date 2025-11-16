@@ -211,6 +211,23 @@ button:focus-visible {
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar__nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.sidebar__nav a:hover::after {
+    width: 100%;
 }
 
 .sidebar__social {
@@ -319,10 +336,21 @@ button:focus-visible {
 }
 
 .work-item__link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     margin: 0 2rem 2rem;
     font-weight: 400;
     text-decoration: underline;
+}
+
+.work-item__link svg {
+    stroke: var(--color-text);
+    transition: transform 0.2s ease;
+}
+
+.work-item__link:hover svg {
+    transform: translate(2px, -2px);
 }
 
 /* ========================================
