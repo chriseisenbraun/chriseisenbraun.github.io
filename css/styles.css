@@ -29,7 +29,7 @@
 }
 
 [data-theme="tron"] {
-    /* Tron Theme - Neon colors on black */
+    /* Neon Theme - Vibrant neon colors on black */
     --color-bg: #000000;
     --color-text: #00ffff;
     --color-text-muted: #008b8b;
@@ -42,7 +42,7 @@
 }
 
 [data-theme="borderlands"] {
-    /* Borderlands Theme - Desert palette */
+    /* Desert Theme - Warm sand and terracotta palette */
     --color-bg: #f5deb3;
     --color-text: #2c1810;
     --color-text-muted: #5c3820;

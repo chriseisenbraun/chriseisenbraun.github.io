@@ -27,11 +27,11 @@
         },
         tron: {
             next: 'borderlands',
-            label: 'Tron'
+            label: 'Neon'
         },
         borderlands: {
             next: 'light',
-            label: 'Borderlands'
+            label: 'Desert'
         }
     };
 
