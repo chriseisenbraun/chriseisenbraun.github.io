@@ -24,8 +24,8 @@
     --color-button-hover-bg: #d0d0d0;
 }
 
-/* Future themes can be added here:
 [data-theme="tron"] {
+    /* Tron Theme - Neon colors on black */
     --color-bg: #000;
     --color-text: #00ffff;
     --color-link: #ff00ff;
@@ -36,6 +36,7 @@
 }
 
 [data-theme="borderlands"] {
+    /* Borderlands Theme - Desert palette */
     --color-bg: #d4a574;
     --color-text: #2c1810;
     --color-link: #8b4513;
@@ -44,7 +45,6 @@
     --color-button-text: #f5deb3;
     --color-button-hover-bg: #a0522d;
 }
-*/
 
 /* ========================================
    Base Styles

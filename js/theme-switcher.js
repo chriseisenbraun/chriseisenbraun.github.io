@@ -1,6 +1,7 @@
 /**
  * Theme Switcher
- * Handles switching between light and dark themes with localStorage persistence
+ * Handles cycling between multiple themes with localStorage persistence
+ * Cycle order: Light → Dark → Tron → Borderlands → Light...
  */
 
 (function () {
@@ -12,25 +13,26 @@
     // Get current theme (already set by inline script in head)
     let currentTheme = html.getAttribute('data-theme') || 'light';
 
-    // Theme configurations
+    // Theme configurations - defines the cycle order and button labels
+    // Each theme's 'next' property points to the next theme in the cycle
+    // Each theme's 'label' property shows what theme will be activated on click
     const themes = {
         light: {
             next: 'dark',
-            label: 'Dark Mode'
+            label: 'Dark'
         },
         dark: {
+            next: 'tron',
+            label: 'Tron'
+        },
+        tron: {
+            next: 'borderlands',
+            label: 'Borderlands'
+        },
+        borderlands: {
             next: 'light',
-            label: 'Light Mode'
+            label: 'Light'
         }
-        // Future themes can be added here:
-        // tron: {
-        //     next: 'borderlands',
-        //     label: 'Borderlands Theme'
-        // },
-        // borderlands: {
-        //     next: 'light',
-        //     label: 'Light Theme'
-        // }
     };
 
     /**
@@ -39,8 +41,16 @@
      */
     function updateButtonLabel() {
         const config = themes[currentTheme];
+
+        // If theme not found in config, default to light theme
+        if (!config) {
+            currentTheme = 'light';
+            setTheme('light');
+            return;
+        }
+
         themeLabel.textContent = config.label;
-        themeToggle.setAttribute('aria-label', `Switch to ${config.label.toLowerCase()}`);
+        themeToggle.setAttribute('aria-label', `Switch to ${config.label} theme`);
     }
 
     /**
