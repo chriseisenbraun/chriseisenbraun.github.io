@@ -31,7 +31,7 @@
         },
         borderlands: {
             next: 'light',
-            label: 'Desert'
+            label: 'Western'
         }
     };
 
