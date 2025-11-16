@@ -16,7 +16,7 @@
 
     /* Fonts */
     --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Fraunces', serif;
+    --font-body: 'Space Grotesk', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -33,7 +33,7 @@
 
     /* Fonts */
     --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Fraunces', serif;
+    --font-body: 'Space Grotesk', sans-serif;
 }
 
 [data-theme="tron"] {
@@ -50,7 +50,7 @@
 
     /* Fonts */
     --font-heading: 'Orbitron', sans-serif;
-    --font-body: 'Fraunces', serif;
+    --font-body: 'Space Grotesk', sans-serif;
 }
 
 [data-theme="borderlands"] {
