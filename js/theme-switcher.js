@@ -15,29 +15,29 @@
 
     // Theme configurations - defines the cycle order and button labels
     // Each theme's 'next' property points to the next theme in the cycle
-    // Each theme's 'label' property shows what theme will be activated on click
+    // Each theme's 'label' property shows the current active theme name
     const themes = {
         light: {
             next: 'dark',
-            label: 'Dark'
+            label: 'Light'
         },
         dark: {
             next: 'tron',
-            label: 'Tron'
+            label: 'Dark'
         },
         tron: {
             next: 'borderlands',
-            label: 'Borderlands'
+            label: 'Tron'
         },
         borderlands: {
             next: 'light',
-            label: 'Light'
+            label: 'Borderlands'
         }
     };
 
     /**
      * Updates the button label based on the current theme
-     * Shows the name of the theme that will be activated on next click
+     * Shows the name of the currently active theme
      */
     function updateButtonLabel() {
         const config = themes[currentTheme];
@@ -50,7 +50,7 @@
         }
 
         themeLabel.textContent = config.label;
-        themeToggle.setAttribute('aria-label', `Switch to ${config.label} theme`);
+        themeToggle.setAttribute('aria-label', `Current theme: ${config.label}. Click to cycle themes.`);
     }
 
     /**
