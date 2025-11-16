@@ -87,6 +87,7 @@ html {
     background-color: var(--color-bg);
     color: var(--color-text);
     transition: background-color 0.3s ease, color 0.3s ease;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -469,6 +470,10 @@ a:focus {
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
