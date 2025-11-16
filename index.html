@@ -75,10 +75,76 @@
             <div class="work-grid">
                 <article class="work-item">
                     <div class="work-item__visual">
-                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <rect width="400" height="300" fill="var(--color-accent-light)"/>
-                            <circle cx="200" cy="150" r="80" fill="var(--color-accent)" opacity="0.3"/>
-                            <rect x="120" y="70" width="160" height="160" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" aria-hidden="true" role="img">
+                            <style>
+                                /* Theme-controlled colors */
+                                .shape-bg { fill: var(--color-accent-light); }
+                                .shape-circle { fill: var(--color-accent); }
+                                .shape-border { stroke: var(--color-accent); fill: none; }
+                                .shape-accent { fill: var(--color-accent); }
+                                .shape-dark { fill: var(--color-text); }
+                                .shape-line { stroke: var(--color-border); fill: none; }
+                                .shape-navy { fill: var(--color-text); }
+                            </style>
+
+                            <defs>
+                                <!-- Dot pattern for texture -->
+                                <pattern id="dotPattern1" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="10" cy="10" r="1.5" class="shape-accent" opacity="0.3"/>
+                                </pattern>
+
+                                <!-- Smaller dots for circle -->
+                                <pattern id="fineDots" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+                                    <circle cx="6" cy="6" r="1" class="shape-dark" opacity="0.15"/>
+                                </pattern>
+                            </defs>
+
+                            <!-- Background -->
+                            <rect width="400" height="400" class="shape-bg"/>
+
+                            <!-- Subtle background texture -->
+                            <rect width="400" height="400" fill="url(#dotPattern1)"/>
+
+                            <!-- Dividing lines - creating quadrants -->
+                            <line x1="200" y1="60" x2="200" y2="340" class="shape-line" stroke-width="1"/>
+                            <line x1="60" y1="200" x2="340" y2="200" class="shape-line" stroke-width="1"/>
+
+                            <!-- Diagonal accent lines -->
+                            <line x1="80" y1="80" x2="140" y2="80" class="shape-border" stroke-width="2"/>
+                            <line x1="80" y1="80" x2="80" y2="140" class="shape-border" stroke-width="2"/>
+
+                            <line x1="320" y1="260" x2="320" y2="320" class="shape-border" stroke-width="2"/>
+                            <line x1="260" y1="320" x2="320" y2="320" class="shape-border" stroke-width="2"/>
+
+                            <!-- Main square frame -->
+                            <rect x="100" y="100" width="200" height="200" class="shape-border" stroke-width="3"/>
+
+                            <!-- Inner decorative square -->
+                            <rect x="110" y="110" width="180" height="180" class="shape-line" stroke-width="1"/>
+
+                            <!-- Main circle with texture -->
+                            <circle cx="200" cy="200" r="90" class="shape-circle"/>
+                            <circle cx="200" cy="200" r="90" fill="url(#fineDots)"/>
+
+                            <!-- Small accent circles in corners -->
+                            <circle cx="115" cy="115" r="8" class="shape-accent"/>
+                            <circle cx="285" cy="115" r="8" class="shape-navy"/>
+                            <circle cx="115" cy="285" r="8" class="shape-navy"/>
+                            <circle cx="285" cy="285" r="8" class="shape-accent"/>
+
+                            <!-- Decorative dots outside the frame -->
+                            <circle cx="60" cy="60" r="3" class="shape-dark" opacity="0.4"/>
+                            <circle cx="340" cy="60" r="3" class="shape-dark" opacity="0.4"/>
+                            <circle cx="60" cy="340" r="3" class="shape-dark" opacity="0.4"/>
+                            <circle cx="340" cy="340" r="3" class="shape-dark" opacity="0.4"/>
+
+                            <!-- Small geometric accent in top right -->
+                            <rect x="310" y="60" width="30" height="30" class="shape-border" stroke-width="1.5"/>
+                            <line x1="310" y1="75" x2="340" y2="75" class="shape-border" stroke-width="1.5"/>
+
+                            <!-- Small geometric accent in bottom left -->
+                            <circle cx="75" cy="325" r="15" class="shape-line" stroke-width="1.5"/>
+                            <circle cx="75" cy="325" r="8" class="shape-line" stroke-width="1.5"/>
                         </svg>
                     </div>
                     <h3 class="work-item__title">CSS Experiments</h3>
@@ -88,10 +154,107 @@
 
                 <article class="work-item">
                     <div class="work-item__visual">
-                        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                            <rect width="400" height="300" fill="var(--color-accent-light)"/>
-                            <path d="M100,150 L200,80 L300,150 L200,220 Z" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
-                            <circle cx="200" cy="150" r="40" fill="var(--color-accent)" opacity="0.3"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" aria-hidden="true" role="img">
+                            <style>
+                                /* Theme-controlled colors */
+                                .shape-bg2 { fill: var(--color-accent-light); }
+                                .shape-circle2 { fill: var(--color-accent); }
+                                .shape-border2 { stroke: var(--color-accent); fill: none; }
+                                .shape-accent2 { fill: var(--color-accent); }
+                                .shape-dark2 { fill: var(--color-text); }
+                                .shape-line2 { stroke: var(--color-border); fill: none; }
+                                .shape-navy2 { fill: var(--color-text); }
+                                .shape-navy-stroke2 { stroke: var(--color-text); fill: none; }
+                            </style>
+
+                            <defs>
+                                <!-- Radiating line pattern -->
+                                <pattern id="radiatingLines" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                                    <line x1="0" y1="20" x2="40" y2="20" class="shape-line2" stroke-width="0.5" opacity="0.3"/>
+                                </pattern>
+
+                                <!-- Small dots -->
+                                <pattern id="dotPattern2" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+                                    <circle cx="8" cy="8" r="1" class="shape-accent2" opacity="0.25"/>
+                                </pattern>
+
+                                <!-- Diagonal lines pattern -->
+                                <pattern id="diagonalLines" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                                    <line x1="0" y1="0" x2="0" y2="10" class="shape-line2" stroke-width="0.5" opacity="0.2"/>
+                                </pattern>
+                            </defs>
+
+                            <!-- Background -->
+                            <rect width="400" height="400" class="shape-bg2"/>
+
+                            <!-- Background pattern -->
+                            <rect width="400" height="400" fill="url(#dotPattern2)"/>
+
+                            <!-- Horizontal dividing lines -->
+                            <line x1="0" y1="100" x2="400" y2="100" class="shape-line2" stroke-width="1" opacity="0.5"/>
+                            <line x1="0" y1="300" x2="400" y2="300" class="shape-line2" stroke-width="1" opacity="0.5"/>
+
+                            <!-- Vertical dividing lines -->
+                            <line x1="100" y1="0" x2="100" y2="400" class="shape-line2" stroke-width="1" opacity="0.5"/>
+                            <line x1="300" y1="0" x2="300" y2="400" class="shape-line2" stroke-width="1" opacity="0.5"/>
+
+                            <!-- Corner accent marks -->
+                            <line x1="50" y1="50" x2="90" y2="50" class="shape-accent2" stroke-width="2"/>
+                            <line x1="50" y1="50" x2="50" y2="90" class="shape-accent2" stroke-width="2"/>
+
+                            <line x1="310" y1="50" x2="350" y2="50" class="shape-navy-stroke2" stroke-width="2"/>
+                            <line x1="350" y1="50" x2="350" y2="90" class="shape-navy-stroke2" stroke-width="2"/>
+
+                            <line x1="50" y1="310" x2="90" y2="310" class="shape-navy-stroke2" stroke-width="2"/>
+                            <line x1="50" y1="310" x2="50" y2="350" class="shape-navy-stroke2" stroke-width="2"/>
+
+                            <line x1="310" y1="350" x2="350" y2="350" class="shape-accent2" stroke-width="2"/>
+                            <line x1="350" y1="310" x2="350" y2="350" class="shape-accent2" stroke-width="2"/>
+
+                            <!-- Main diamond/square rotated 45 degrees -->
+                            <rect x="120" y="120" width="160" height="160"
+                                  class="shape-border2"
+                                  stroke-width="3"
+                                  transform="rotate(45 200 200)"/>
+
+                            <!-- Inner diamond -->
+                            <rect x="135" y="135" width="130" height="130"
+                                  class="shape-line2"
+                                  stroke-width="1"
+                                  transform="rotate(45 200 200)"/>
+
+                            <!-- Diamond with pattern fill -->
+                            <rect x="145" y="145" width="110" height="110"
+                                  fill="url(#diagonalLines)"
+                                  transform="rotate(45 200 200)"/>
+
+                            <!-- Main circle -->
+                            <circle cx="200" cy="200" r="75" class="shape-circle2"/>
+
+                            <!-- Circle with radiating pattern -->
+                            <circle cx="200" cy="200" r="75" fill="url(#radiatingLines)" opacity="0.4"/>
+
+                            <!-- Small center circle -->
+                            <circle cx="200" cy="200" r="25" class="shape-navy2"/>
+
+                            <!-- Decorative circles at diamond points -->
+                            <circle cx="200" cy="90" r="6" class="shape-accent2"/>
+                            <circle cx="310" cy="200" r="6" class="shape-navy2"/>
+                            <circle cx="200" cy="310" r="6" class="shape-accent2"/>
+                            <circle cx="90" cy="200" r="6" class="shape-navy2"/>
+
+                            <!-- Small geometric detail in corner -->
+                            <polygon points="335,65 355,65 345,85" class="shape-accent2"/>
+
+                            <!-- Concentric arcs for detail -->
+                            <path d="M 60 60 Q 80 60 80 80" class="shape-line2" stroke-width="1.5"/>
+                            <path d="M 340 340 Q 320 340 320 320" class="shape-line2" stroke-width="1.5"/>
+
+                            <!-- Small dots scattered for interest -->
+                            <circle cx="130" cy="70" r="2.5" class="shape-dark2" opacity="0.3"/>
+                            <circle cx="270" cy="70" r="2.5" class="shape-dark2" opacity="0.3"/>
+                            <circle cx="130" cy="330" r="2.5" class="shape-dark2" opacity="0.3"/>
+                            <circle cx="270" cy="330" r="2.5" class="shape-dark2" opacity="0.3"/>
                         </svg>
                     </div>
                     <h3 class="work-item__title">Interactive Demos</h3>
