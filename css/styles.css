@@ -371,7 +371,6 @@ a:focus {
 [data-theme="neon"] h1,
 [data-theme="neon"] h2,
 [data-theme="neon"] h3,
-[data-theme="neon"] .section__number,
 [data-theme="neon"] .sidebar__nav a {
     text-shadow:
         0 0 20px currentColor,
