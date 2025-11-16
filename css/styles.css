@@ -1,3 +1,55 @@
+/* ========================================
+   CSS Variables for Theming
+   ======================================== */
+
+:root {
+    /* Light Theme (Default) */
+    --color-bg: #efe8e8ee;
+    --color-text: #222;
+    --color-link: #0066cc;
+    --color-link-hover: #004499;
+    --color-button-bg: #333;
+    --color-button-text: #fff;
+    --color-button-hover-bg: #555;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --color-bg: #1a1a1a;
+    --color-text: #e0e0e0;
+    --color-link: #66b3ff;
+    --color-link-hover: #99ccff;
+    --color-button-bg: #f0f0f0;
+    --color-button-text: #1a1a1a;
+    --color-button-hover-bg: #d0d0d0;
+}
+
+/* Future themes can be added here:
+[data-theme="tron"] {
+    --color-bg: #000;
+    --color-text: #00ffff;
+    --color-link: #ff00ff;
+    --color-link-hover: #ffff00;
+    --color-button-bg: #00ffff;
+    --color-button-text: #000;
+    --color-button-hover-bg: #ff00ff;
+}
+
+[data-theme="borderlands"] {
+    --color-bg: #d4a574;
+    --color-text: #2c1810;
+    --color-link: #8b4513;
+    --color-link-hover: #a0522d;
+    --color-button-bg: #8b4513;
+    --color-button-text: #f5deb3;
+    --color-button-hover-bg: #a0522d;
+}
+*/
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
 *,
 *:before,
 *:after {
@@ -12,19 +64,33 @@ ul {
 
 html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #efe8e8ee;
-    color: #222;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
-    font-weight: 30;
+    font-weight: 300;
 }
+
+a {
+    color: var(--color-link);
+    transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-link-hover);
+}
+
+/* ========================================
+   Layout Components
+   ======================================== */
 
 .page-wrap {
     display: grid;
     justify-content: center;
     padding: 1rem;
-
 }
 
 .flex {
@@ -34,8 +100,47 @@ h1 {
 
 .flex li {
     margin-block-end: .5rem;
-
 }
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-button-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:active {
+    transform: translateY(0);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
 
 @media screen and (min-width: 768px) {
     .page-wrap {
@@ -49,5 +154,4 @@ h1 {
     .flex li {
         margin-inline-end: 1rem;
     }
-
 }

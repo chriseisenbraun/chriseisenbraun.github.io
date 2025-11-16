@@ -6,9 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chris Eisenbraun Home</title>
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Load saved theme immediately to prevent flash of unstyled content -->
+    <script>
+        // Load theme from localStorage before page renders
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
 </head>
 
 <body>
+
+    <!-- Theme Toggle Button -->
+    <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Toggle between light and dark theme"
+        aria-live="polite">
+        <span id="themeLabel">Dark Mode</span>
+    </button>
 
     <div class="page-wrap">
         <h1>Chris Eisenbraun</h1>
@@ -24,6 +40,9 @@
             <li><a href="https://www.reverbnation.com/yippy/songs" target="_blank">Old Songs</a></li>
         </ul>
     </div>
+
+    <!-- Theme Switcher Script -->
+    <script src="js/theme-switcher.js"></script>
 
 </body>
 
