@@ -1,7 +1,99 @@
+/* ========================================
+   CSS Variables for Theming
+   ======================================== */
+
+:root {
+    /* Light Theme - Warm, sophisticated palette */
+    --color-bg: #F5F1EB;              /* Warm cream/beige background */
+    --color-text: #2F4858;            /* Navy blue text */
+    --color-text-muted: #5A5A5A;      /* Secondary grey text */
+    --color-border: #D0CBC4;          /* Subtle grey borders */
+    --color-accent: #B8956A;          /* Warm terracotta/bronze accent */
+    --color-accent-light: #FAF8F5;    /* Very light cream for cards */
+    --color-button-bg: #B8956A;       /* Terracotta button background */
+    --color-button-text: #FAF8F5;     /* Light button text */
+    --color-button-hover-bg: #C89B6D; /* Muted terracotta hover */
+
+    /* Fonts */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
+[data-theme="neon"] {
+    /* Neon Theme - Vibrant neon colors on black */
+    --color-bg: #000000;
+    --color-text: #00ffff;
+    --color-text-muted: #008b8b;
+    --color-border: #00ffff;
+    --color-accent: #ff00ff;
+    --color-accent-light: rgba(0, 255, 255, 0.05);
+    --color-button-bg: #00ffff;
+    --color-button-text: #000000;
+    --color-button-hover-bg: #ff00ff;
+
+    /* Fonts */
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
+[data-theme="western"] {
+    /* Western Theme - Warm sand and terracotta palette */
+    --color-bg: #f5deb3;
+    --color-text: #2c1810;
+    --color-text-muted: #5c3820;
+    --color-border: #2c1810;
+    --color-accent: #8b4513;
+    --color-accent-light: #d4a574;
+    --color-button-bg: #8b4513;
+    --color-button-text: #f5deb3;
+    --color-button-hover-bg: #a0522d;
+
+    /* Fonts */
+    --font-heading: 'Special Elite', monospace;
+    --font-body: 'Fraunces', serif;
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+
 *,
 *:before,
 *:after {
     box-sizing: border-box;
+}
+
+html {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+p {
+    margin: 0 0 1.5rem 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
 }
 
 ul {
@@ -10,44 +102,484 @@ ul {
     padding: 0;
 }
 
-html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #efe8e8ee;
-    color: #222;
+a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
 }
 
-h1 {
-    font-weight: 30;
+a:hover {
+    opacity: 0.6;
 }
 
-.page-wrap {
-    display: grid;
-    justify-content: center;
-    padding: 1rem;
-
+/* Global focus styles for accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 
-.flex {
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-button-bg);
+    color: var(--color-button-text);
+    padding: 0.5rem 1rem;
+    z-index: 1001;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ========================================
+   Theme Toggle Button
+   ======================================== */
+
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+    border: 1px solid var(--color-border);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1000;
+}
+
+.theme-toggle:hover {
+    background-color: var(--color-button-hover-bg);
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    padding: 3rem 2rem;
+    border-right: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--color-bg);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.13) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0;
 }
 
-.flex li {
-    margin-block-end: .5rem;
-
+/* Theme-specific dot patterns */
+[data-theme="neon"] .sidebar {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
 }
 
-@media screen and (min-width: 768px) {
-    .page-wrap {
-        padding: 0;
+.sidebar__name {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.sidebar__nav {
+    margin-top: auto;
+}
+
+.sidebar__nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar__nav a {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    display: inline-block;
+}
+
+.sidebar__nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.sidebar__nav a:hover::after {
+    width: 100%;
+}
+
+.sidebar__social {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.sidebar__social a {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar__social svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--color-text);
+    transition: opacity 0.2s ease;
+}
+
+.sidebar__social a:hover svg {
+    opacity: 0.6;
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+
+.main-content {
+    grid-column: 2;
+    padding: 3rem;
+    max-width: 1200px;
+}
+
+.section {
+    min-height: 60vh;
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.section__number {
+    font-family: var(--font-heading);
+    font-size: 8rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 2rem;
+    opacity: 0.35;
+    user-select: none;
+}
+
+.section__heading {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+/* ========================================
+   Work Section
+   ======================================== */
+
+.work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+}
+
+.work-item {
+    border: 1px solid var(--color-border);
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.work-item:hover {
+    transform: translateX(8px);
+}
+
+.work-item__visual {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.work-item__visual svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.work-item__title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 2rem 2rem 1rem;
+}
+
+.work-item__desc {
+    color: var(--color-text-muted);
+    margin: 0 2rem 1.5rem;
+}
+
+.work-item__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 2rem 2rem;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.work-item__link svg {
+    stroke: var(--color-text);
+    transition: transform 0.2s ease;
+}
+
+.work-item__link:hover svg {
+    transform: translate(2px, -2px);
+}
+
+/* ========================================
+   About Section
+   ======================================== */
+
+.about-content {
+    max-width: 700px;
+}
+
+.lead {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   Contact Section
+   ======================================== */
+
+.contact-content {
+    max-width: 700px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.contact-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+    width: fit-content;
+    position: relative;
+}
+
+.contact-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent);
+    transition: width 0.3s ease;
+}
+
+.contact-links a:hover::after {
+    width: 100%;
+}
+
+.contact-links svg {
+    stroke: var(--color-text);
+    transition: transform 0.2s ease;
+}
+
+.contact-links a:hover svg {
+    transform: translate(2px, -2px);
+}
+
+/* ========================================
+   Neon Theme - Glow Effects
+   ======================================== */
+
+[data-theme="neon"] h1,
+[data-theme="neon"] h2,
+[data-theme="neon"] h3,
+[data-theme="neon"] .sidebar__nav a {
+    text-shadow:
+        0 0 20px currentColor,
+        0 0 40px currentColor;
+}
+
+/* ========================================
+   SVG Animations
+   ======================================== */
+
+/* Keyframe animations */
+@keyframes svg-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes svg-rotate-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Base animations - subtle and slow */
+.svg-rotate-slow {
+    animation: svg-rotate 40s linear infinite;
+    transform-origin: center;
+}
+
+.svg-rotate-reverse {
+    animation: svg-rotate-reverse 30s linear infinite;
+    transform-origin: center;
+}
+
+/* Hover state - more dramatic animations */
+.work-item:hover .svg-rotate-slow {
+    animation-duration: 10s;
+}
+
+.work-item:hover .svg-rotate-reverse {
+    animation-duration: 8s;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media screen and (max-width: 1024px) {
+    .main-content {
+        padding: 2rem;
     }
 
-    .flex {
+    .section__number {
+        font-size: 6rem;
+    }
+
+    .section__heading {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 2rem 1.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .sidebar__header {
+        margin-bottom: 2rem;
+    }
+
+    .sidebar__nav {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
+
+    .sidebar__nav ul {
         flex-direction: row;
+        gap: 1.5rem;
     }
 
-    .flex li {
-        margin-inline-end: 1rem;
+    .sidebar__social {
+        margin-top: 0;
     }
 
+    .main-content {
+        grid-column: 1;
+        padding: 2rem 1.5rem;
+    }
+
+    .section {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+
+    .section__number {
+        font-size: 4rem;
+    }
+
+    .section__heading {
+        font-size: 1.75rem;
+    }
+
+    .work-grid {
+        gap: 3rem;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+    }
+
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* Completely disable SVG animations for reduced motion */
+    .svg-rotate-slow,
+    .svg-rotate-reverse {
+        animation: none !important;
+    }
 }
