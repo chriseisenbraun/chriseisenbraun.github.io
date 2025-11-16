@@ -81,12 +81,4 @@
 
     // Add click event listener
     themeToggle.addEventListener('click', toggleTheme);
-
-    // Add keyboard support (Enter and Space keys)
-    themeToggle.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            toggleTheme();
-        }
-    });
 })();

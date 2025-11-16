@@ -119,6 +119,23 @@ button:focus-visible {
     outline-offset: 2px;
 }
 
+/* Skip to main content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-button-bg);
+    color: var(--color-button-text);
+    padding: 0.5rem 1rem;
+    z-index: 1001;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* ========================================
    Theme Toggle Button
    ======================================== */
@@ -394,33 +411,6 @@ button:focus-visible {
     }
 }
 
-@keyframes svg-pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-}
-
-@keyframes svg-pulse-slow {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.3;
-    }
-}
-
-@keyframes svg-scale {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
-
 /* Base animations - subtle and slow */
 .svg-rotate-slow {
     animation: svg-rotate 40s linear infinite;
@@ -430,14 +420,6 @@ button:focus-visible {
 .svg-rotate-reverse {
     animation: svg-rotate-reverse 30s linear infinite;
     transform-origin: center;
-}
-
-.svg-pulse {
-    animation: svg-pulse 4s ease-in-out infinite;
-}
-
-.svg-pulse-slow {
-    animation: svg-pulse-slow 6s ease-in-out infinite;
 }
 
 /* Hover state - more dramatic animations */
@@ -555,9 +537,7 @@ button:focus-visible {
 
     /* Completely disable SVG animations for reduced motion */
     .svg-rotate-slow,
-    .svg-rotate-reverse,
-    .svg-pulse,
-    .svg-pulse-slow {
+    .svg-rotate-reverse {
         animation: none !important;
     }
 }
