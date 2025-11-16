@@ -390,6 +390,117 @@ button:focus-visible {
 }
 
 /* ========================================
+   SVG Animations
+   ======================================== */
+
+/* Keyframe animations */
+@keyframes svg-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes svg-rotate-reverse {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes svg-pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes svg-pulse-slow {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes svg-scale {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Base animations - subtle and slow */
+.svg-rotate-slow {
+    animation: svg-rotate 40s linear infinite;
+    transform-origin: center;
+}
+
+.svg-rotate-reverse {
+    animation: svg-rotate-reverse 30s linear infinite;
+    transform-origin: center;
+}
+
+.svg-pulse {
+    animation: svg-pulse 4s ease-in-out infinite;
+}
+
+.svg-pulse-slow {
+    animation: svg-pulse-slow 6s ease-in-out infinite;
+}
+
+/* Hover state - more dramatic animations */
+.work-item:hover .svg-rotate-slow {
+    animation-duration: 10s;
+}
+
+.work-item:hover .svg-rotate-reverse {
+    animation-duration: 8s;
+}
+
+.work-item:hover .svg-pulse {
+    animation: svg-pulse 1.5s ease-in-out infinite, svg-scale 2s ease-in-out infinite;
+}
+
+.work-item:hover .svg-pulse-slow {
+    animation-duration: 2s;
+}
+
+/* Theme-specific: Neon gets more dramatic effects */
+[data-theme="neon"] .svg-rotate-slow {
+    animation-duration: 25s;
+}
+
+[data-theme="neon"] .svg-rotate-reverse {
+    animation-duration: 20s;
+}
+
+[data-theme="neon"] .svg-pulse {
+    animation-duration: 2s;
+}
+
+[data-theme="neon"] .work-item:hover .svg-rotate-slow {
+    animation-duration: 6s;
+}
+
+[data-theme="neon"] .work-item:hover .svg-rotate-reverse {
+    animation-duration: 5s;
+}
+
+[data-theme="neon"] .work-item:hover .svg-pulse {
+    animation-duration: 0.8s;
+}
+
+/* ========================================
    Responsive Design
    ======================================== */
 
@@ -491,5 +602,13 @@ button:focus-visible {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+
+    /* Completely disable SVG animations for reduced motion */
+    .svg-rotate-slow,
+    .svg-rotate-reverse,
+    .svg-pulse,
+    .svg-pulse-slow {
+        animation: none !important;
     }
 }
