@@ -467,14 +467,6 @@ button:focus-visible {
     animation-duration: 8s;
 }
 
-.work-item:hover .svg-pulse {
-    animation: svg-pulse 1.5s ease-in-out infinite, svg-scale 2s ease-in-out infinite;
-}
-
-.work-item:hover .svg-pulse-slow {
-    animation-duration: 2s;
-}
-
 /* Theme-specific: Neon gets more dramatic effects */
 [data-theme="neon"] .svg-rotate-slow {
     animation-duration: 25s;
@@ -494,10 +486,6 @@ button:focus-visible {
 
 [data-theme="neon"] .work-item:hover .svg-rotate-reverse {
     animation-duration: 5s;
-}
-
-[data-theme="neon"] .work-item:hover .svg-pulse {
-    animation-duration: 0.8s;
 }
 
 /* ========================================
