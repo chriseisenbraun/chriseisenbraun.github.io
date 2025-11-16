@@ -3,16 +3,16 @@
    ======================================== */
 
 :root {
-    /* Light Theme (Default) */
-    --color-bg: #ffffff;
-    --color-text: #000000;
-    --color-text-muted: #666666;
-    --color-border: #000000;
-    --color-accent: #000000;
-    --color-accent-light: #f5f5f5;
-    --color-button-bg: #000000;
-    --color-button-text: #ffffff;
-    --color-button-hover-bg: #333333;
+    /* Light Theme - Warm, sophisticated palette */
+    --color-bg: #F5F1EB;              /* Warm cream/beige background */
+    --color-text: #2C2C2C;            /* Dark charcoal text */
+    --color-text-muted: #5A5A5A;      /* Secondary grey text */
+    --color-border: #D0CBC4;          /* Subtle grey borders */
+    --color-accent: #B8956A;          /* Warm terracotta/bronze accent */
+    --color-accent-light: #FAF8F5;    /* Very light cream for cards */
+    --color-button-bg: #B8956A;       /* Terracotta button background */
+    --color-button-text: #FAF8F5;     /* Light button text */
+    --color-button-hover-bg: #C89B6D; /* Muted terracotta hover */
 }
 
 [data-theme="dark"] {
