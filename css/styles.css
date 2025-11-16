@@ -36,7 +36,7 @@
     --font-body: 'Space Grotesk', sans-serif;
 }
 
-[data-theme="tron"] {
+[data-theme="neon"] {
     /* Neon Theme - Vibrant neon colors on black */
     --color-bg: #000000;
     --color-text: #00ffff;
@@ -53,7 +53,7 @@
     --font-body: 'Space Grotesk', sans-serif;
 }
 
-[data-theme="borderlands"] {
+[data-theme="western"] {
     /* Western Theme - Warm sand and terracotta palette */
     --color-bg: #f5deb3;
     --color-text: #2c1810;
@@ -368,11 +368,11 @@ a:focus {
    Neon Theme - Glow Effects
    ======================================== */
 
-[data-theme="tron"] h1,
-[data-theme="tron"] h2,
-[data-theme="tron"] h3,
-[data-theme="tron"] .section__number,
-[data-theme="tron"] .sidebar__nav a {
+[data-theme="neon"] h1,
+[data-theme="neon"] h2,
+[data-theme="neon"] h3,
+[data-theme="neon"] .section__number,
+[data-theme="neon"] .sidebar__nav a {
     text-shadow:
         0 0 20px currentColor,
         0 0 40px currentColor;
