@@ -1,7 +1,7 @@
 /**
  * Theme Switcher
  * Handles cycling between multiple themes with localStorage persistence
- * Cycle order: Light → Dark → Neon → Western → Light...
+ * Cycle order: Light → Neon → Western → Light...
  */
 
 (function () {
@@ -18,12 +18,8 @@
     // Each theme's 'label' property shows the current active theme name
     const themes = {
         light: {
-            next: 'dark',
-            label: 'Light'
-        },
-        dark: {
             next: 'neon',
-            label: 'Dark'
+            label: 'Light'
         },
         neon: {
             next: 'western',

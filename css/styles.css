@@ -19,23 +19,6 @@
     --font-body: 'Space Grotesk', sans-serif;
 }
 
-[data-theme="dark"] {
-    /* Dark Theme */
-    --color-bg: #000000;
-    --color-text: #ffffff;
-    --color-text-muted: #999999;
-    --color-border: #ffffff;
-    --color-accent: #ffffff;
-    --color-accent-light: #1a1a1a;
-    --color-button-bg: #ffffff;
-    --color-button-text: #000000;
-    --color-button-hover-bg: #cccccc;
-
-    /* Fonts */
-    --font-heading: 'Space Grotesk', sans-serif;
-    --font-body: 'Space Grotesk', sans-serif;
-}
-
 [data-theme="neon"] {
     /* Neon Theme - Vibrant neon colors on black */
     --color-bg: #000000;
@@ -184,7 +167,6 @@ button:focus-visible {
 }
 
 /* Theme-specific dot patterns */
-[data-theme="dark"] .sidebar,
 [data-theme="neon"] .sidebar {
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
 }
@@ -465,27 +447,6 @@ button:focus-visible {
 
 .work-item:hover .svg-rotate-reverse {
     animation-duration: 8s;
-}
-
-/* Theme-specific: Neon gets more dramatic effects */
-[data-theme="neon"] .svg-rotate-slow {
-    animation-duration: 25s;
-}
-
-[data-theme="neon"] .svg-rotate-reverse {
-    animation-duration: 20s;
-}
-
-[data-theme="neon"] .svg-pulse {
-    animation-duration: 2s;
-}
-
-[data-theme="neon"] .work-item:hover .svg-rotate-slow {
-    animation-duration: 6s;
-}
-
-[data-theme="neon"] .work-item:hover .svg-rotate-reverse {
-    animation-duration: 5s;
 }
 
 /* ========================================
