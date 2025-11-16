@@ -178,7 +178,7 @@ button:focus-visible {
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--color-bg);
-    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.13) 1px, transparent 1px);
     background-size: 20px 20px;
     background-position: 0 0;
 }
@@ -186,7 +186,7 @@ button:focus-visible {
 /* Theme-specific dot patterns */
 [data-theme="dark"] .sidebar,
 [data-theme="neon"] .sidebar {
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
 }
 
 .sidebar__name {
