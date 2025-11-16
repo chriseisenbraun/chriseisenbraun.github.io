@@ -16,17 +16,7 @@
     <!-- Load saved theme immediately to prevent flash of unstyled content -->
     <script>
         // Load theme from localStorage before page renders
-        let savedTheme = localStorage.getItem('theme') || 'light';
-
-        // Migrate old theme names to new ones
-        if (savedTheme === 'tron') {
-            savedTheme = 'neon';
-            localStorage.setItem('theme', 'neon');
-        } else if (savedTheme === 'borderlands') {
-            savedTheme = 'western';
-            localStorage.setItem('theme', 'western');
-        }
-
+        const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
     </script>
 </head>

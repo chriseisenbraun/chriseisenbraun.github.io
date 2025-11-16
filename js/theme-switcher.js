@@ -13,17 +13,6 @@
     // Get current theme (already set by inline script in head)
     let currentTheme = html.getAttribute('data-theme') || 'light';
 
-    // Migrate old theme names to new ones
-    if (currentTheme === 'tron') {
-        currentTheme = 'neon';
-        html.setAttribute('data-theme', 'neon');
-        localStorage.setItem('theme', 'neon');
-    } else if (currentTheme === 'borderlands') {
-        currentTheme = 'western';
-        html.setAttribute('data-theme', 'western');
-        localStorage.setItem('theme', 'western');
-    }
-
     // Theme configurations - defines the cycle order and button labels
     // Each theme's 'next' property points to the next theme in the cycle
     // Each theme's 'label' property shows the current active theme name
