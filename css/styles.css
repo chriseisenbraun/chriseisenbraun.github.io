@@ -336,11 +336,15 @@ button:focus-visible {
 
 .main-content {
     padding: 2rem 1.5rem;
-    max-width: 1200px;
+    max-width: 75rem;
 
     @media screen and (min-width: 48em) {
         grid-column: 2;
         padding: 3rem;
+    }
+
+    @media screen and (min-width: 75em) {
+        max-width: 80vw;
     }
 }
 
