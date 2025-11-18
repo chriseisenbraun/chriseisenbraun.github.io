@@ -4,15 +4,24 @@
 
 :root {
     /* Light Theme - Warm, sophisticated palette */
-    --color-bg: #F5F1EB;              /* Warm cream/beige background */
-    --color-text: #2F4858;            /* Navy blue text */
-    --color-text-muted: #5A5A5A;      /* Secondary grey text */
-    --color-border: #D0CBC4;          /* Subtle grey borders */
-    --color-accent: #B8956A;          /* Warm terracotta/bronze accent */
-    --color-accent-light: #FAF8F5;    /* Very light cream for cards */
-    --color-button-bg: #B8956A;       /* Terracotta button background */
-    --color-button-text: #FAF8F5;     /* Light button text */
-    --color-button-hover-bg: #C89B6D; /* Muted terracotta hover */
+    --color-bg: #F5F1EB;
+    /* Warm cream/beige background */
+    --color-text: #2F4858;
+    /* Navy blue text */
+    --color-text-muted: #5A5A5A;
+    /* Secondary grey text */
+    --color-border: #D0CBC4;
+    /* Subtle grey borders */
+    --color-accent: #B8956A;
+    /* Warm terracotta/bronze accent */
+    --color-accent-light: #FAF8F5;
+    /* Very light cream for cards */
+    --color-button-bg: #B8956A;
+    /* Terracotta button background */
+    --color-button-text: #FAF8F5;
+    /* Light button text */
+    --color-button-hover-bg: #C89B6D;
+    /* Muted terracotta hover */
 
     /* Fonts */
     --font-heading: 'Space Grotesk', sans-serif;
@@ -54,7 +63,7 @@
 }
 
 /* ========================================
-   Base Styles
+   Base Styles (Mobile First)
    ======================================== */
 
 *,
@@ -71,6 +80,10 @@ html {
     color: var(--color-text);
     transition: background-color 0.3s ease, color 0.3s ease;
     scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+    }
 }
 
 body {
@@ -78,10 +91,16 @@ body {
     padding: 0;
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 280px 1fr;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: 48em) {
+        grid-template-columns: 17.5rem 1fr;
+    }
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     margin: 0;
     font-family: var(--font-heading);
     font-weight: 400;
@@ -90,10 +109,10 @@ h1, h2, h3 {
 
 p {
     margin: 0 0 1.5rem 0;
-}
 
-p:last-child {
-    margin-bottom: 0;
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
 
 ul {
@@ -106,14 +125,17 @@ a {
     color: var(--color-text);
     text-decoration: none;
     transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.6;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+    }
 }
 
-a:hover {
-    opacity: 0.6;
-}
-
-/* Global focus styles for accessibility */
-a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
@@ -130,10 +152,10 @@ button:focus-visible {
     z-index: 1001;
     text-decoration: none;
     font-weight: 400;
-}
 
-.skip-link:focus {
-    top: 0;
+    &:focus {
+        top: 0;
+    }
 }
 
 /* ========================================
@@ -142,24 +164,31 @@ button:focus-visible {
 
 .theme-toggle {
     position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    padding: 0.5rem 1rem;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 0.75rem;
     background-color: var(--color-button-bg);
     color: var(--color-button-text);
     border: 1px solid var(--color-border);
     font-family: var(--font-heading);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
     transition: all 0.2s ease;
     z-index: 1000;
-}
 
-.theme-toggle:hover {
-    background-color: var(--color-button-hover-bg);
+    &:hover {
+        background-color: var(--color-button-hover-bg);
+    }
+
+    @media screen and (min-width: 48em) {
+        top: 1.5rem;
+        right: 1.5rem;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
 }
 
 /* ========================================
@@ -167,13 +196,12 @@ button:focus-visible {
    ======================================== */
 
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    height: 100vh;
-    padding: 3rem 2rem;
-    border-right: 1px solid var(--color-border);
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -181,11 +209,29 @@ button:focus-visible {
     background-image: radial-gradient(circle, rgba(0, 0, 0, 0.13) 1px, transparent 1px);
     background-size: 20px 20px;
     background-position: 0 0;
+
+    @media screen and (min-width: 48em) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 17.5rem;
+        height: 100vh;
+        padding: 3rem 2rem;
+        border-right: 1px solid var(--color-border);
+        border-bottom: none;
+    }
 }
 
-/* Theme-specific dot patterns */
 [data-theme="neon"] .sidebar {
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+}
+
+.sidebar__header {
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: 48em) {
+        margin-bottom: 0;
+    }
 }
 
 .sidebar__name {
@@ -196,13 +242,32 @@ button:focus-visible {
 }
 
 .sidebar__nav {
-    margin-top: auto;
+    margin-top: 0;
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: 48em) {
+        margin-top: auto;
+        margin-bottom: 0;
+    }
 }
 
 .sidebar__nav ul {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 1.5rem;
+
+    @media screen and (min-width: 48em) {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+[data-theme="neon"] .sidebar__nav ul {
     gap: 1rem;
+
+    @media screen and (min-width: 48em) {
+        gap: 1.5rem;
+    }
 }
 
 .sidebar__nav a {
@@ -213,33 +278,49 @@ button:focus-visible {
     letter-spacing: 0.05em;
     position: relative;
     display: inline-block;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--color-accent);
+        transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
 }
 
-.sidebar__nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width 0.3s ease;
-}
+[data-theme="neon"] .sidebar__nav a {
+    font-size: 0.875rem;
 
-.sidebar__nav a:hover::after {
-    width: 100%;
+    @media screen and (min-width: 48em) {
+        font-size: 1rem;
+    }
 }
 
 .sidebar__social {
     display: flex;
     gap: 1.5rem;
-    margin-top: 3rem;
+    margin-top: 0;
+
+    @media screen and (min-width: 48em) {
+        margin-top: 3rem;
+    }
 }
 
 .sidebar__social a {
     display: block;
     width: 24px;
     height: 24px;
+
+    &:hover svg {
+        opacity: 0.6;
+    }
 }
 
 .sidebar__social svg {
@@ -249,46 +330,66 @@ button:focus-visible {
     transition: opacity 0.2s ease;
 }
 
-.sidebar__social a:hover svg {
-    opacity: 0.6;
-}
-
 /* ========================================
    Main Content
    ======================================== */
 
 .main-content {
-    grid-column: 2;
-    padding: 3rem;
+    padding: 2rem 1.5rem;
     max-width: 1200px;
+
+    @media screen and (min-width: 48em) {
+        grid-column: 2;
+        padding: 3rem;
+    }
 }
 
 .section {
-    min-height: 60vh;
-    padding: 4rem 0;
+    min-height: auto;
+    padding: 3rem 0;
     border-bottom: 1px solid var(--color-border);
-}
 
-.section:last-child {
-    border-bottom: none;
+    &:last-child {
+        border-bottom: none;
+    }
+
+    @media screen and (min-width: 48em) {
+        padding: 4rem 0;
+    }
 }
 
 .section__number {
     font-family: var(--font-heading);
-    font-size: 8rem;
+    font-size: 4rem;
     font-weight: 500;
     line-height: 1;
     margin-bottom: 2rem;
     opacity: 0.35;
     user-select: none;
+
+    @media screen and (min-width: 48em) {
+        font-size: 6rem;
+    }
+
+    @media screen and (min-width: 64em) {
+        font-size: 8rem;
+    }
 }
 
 .section__heading {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 500;
     margin-bottom: 3rem;
     text-transform: uppercase;
     letter-spacing: -0.02em;
+
+    @media screen and (min-width: 48em) {
+        font-size: 2rem;
+    }
+
+    @media screen and (min-width: 64em) {
+        font-size: 2.5rem;
+    }
 }
 
 /* ========================================
@@ -298,30 +399,46 @@ button:focus-visible {
 .work-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 3rem;
     margin-top: 3rem;
+
+    @media screen and (min-width: 64em) {
+        gap: 4rem;
+    }
+
+    @media screen and (min-width: 75em) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .work-item {
     border: 1px solid var(--color-border);
     padding: 0;
     transition: transform 0.3s ease;
-}
 
-.work-item:hover {
-    transform: translateX(8px);
+    &:hover {
+        transform: translateX(8px);
+
+        .svg-rotate-slow {
+            animation-duration: 10s;
+        }
+
+        .svg-rotate-reverse {
+            animation-duration: 8s;
+        }
+    }
 }
 
 .work-item__visual {
     width: 100%;
     aspect-ratio: 1 / 1;
     border-bottom: 1px solid var(--color-border);
-}
 
-.work-item__visual svg {
-    width: 100%;
-    height: 100%;
-    display: block;
+    svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
 }
 
 .work-item__title {
@@ -342,15 +459,15 @@ button:focus-visible {
     margin: 0 2rem 2rem;
     font-weight: 400;
     text-decoration: underline;
-}
 
-.work-item__link svg {
-    stroke: var(--color-text);
-    transition: transform 0.2s ease;
-}
+    svg {
+        stroke: var(--color-text);
+        transition: transform 0.2s ease;
+    }
 
-.work-item__link:hover svg {
-    transform: translate(2px, -2px);
+    &:hover svg {
+        transform: translate(2px, -2px);
+    }
 }
 
 /* ========================================
@@ -362,10 +479,14 @@ button:focus-visible {
 }
 
 .lead {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 400;
     line-height: 1.4;
     margin-bottom: 2rem;
+
+    @media screen and (min-width: 48em) {
+        font-size: 1.5rem;
+    }
 }
 
 /* ========================================
@@ -391,21 +512,25 @@ button:focus-visible {
     font-weight: 400;
     width: fit-content;
     position: relative;
-}
 
-.contact-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-accent);
-    transition: width 0.3s ease;
-}
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--color-accent);
+        transition: width 0.3s ease;
+    }
 
-.contact-links a:hover::after {
-    width: 100%;
+    &:hover::after {
+        width: 100%;
+    }
+
+    &:hover svg {
+        transform: translate(2px, -2px);
+    }
 }
 
 .contact-links svg {
@@ -413,32 +538,31 @@ button:focus-visible {
     transition: transform 0.2s ease;
 }
 
-.contact-links a:hover svg {
-    transform: translate(2px, -2px);
-}
-
 /* ========================================
    Neon Theme - Glow Effects
    ======================================== */
 
-[data-theme="neon"] h1,
-[data-theme="neon"] h2,
-[data-theme="neon"] h3,
-[data-theme="neon"] .sidebar__nav a {
-    text-shadow:
-        0 0 20px currentColor,
-        0 0 40px currentColor;
+[data-theme="neon"] {
+
+    h1,
+    h2,
+    h3,
+    .sidebar__nav a {
+        text-shadow:
+            0 0 20px currentColor,
+            0 0 40px currentColor;
+    }
 }
 
 /* ========================================
    SVG Animations
    ======================================== */
 
-/* Keyframe animations */
 @keyframes svg-rotate {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -448,12 +572,12 @@ button:focus-visible {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(-360deg);
     }
 }
 
-/* Base animations - subtle and slow */
 .svg-rotate-slow {
     animation: svg-rotate 40s linear infinite;
     transform-origin: center;
@@ -464,110 +588,11 @@ button:focus-visible {
     transform-origin: center;
 }
 
-/* Hover state - more dramatic animations */
-.work-item:hover .svg-rotate-slow {
-    animation-duration: 10s;
-}
-
-.work-item:hover .svg-rotate-reverse {
-    animation-duration: 8s;
-}
-
 /* ========================================
-   Responsive Design
+   Accessibility - Reduce Motion
    ======================================== */
 
-@media screen and (max-width: 1024px) {
-    .main-content {
-        padding: 2rem;
-    }
-
-    .section__number {
-        font-size: 6rem;
-    }
-
-    .section__heading {
-        font-size: 2rem;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        padding: 2rem 1.5rem;
-        border-right: none;
-        border-bottom: 1px solid var(--color-border);
-    }
-
-    .sidebar__header {
-        margin-bottom: 2rem;
-    }
-
-    .sidebar__nav {
-        margin-top: 0;
-        margin-bottom: 2rem;
-    }
-
-    .sidebar__nav ul {
-        flex-direction: row;
-        gap: 1.5rem;
-    }
-
-    .sidebar__social {
-        margin-top: 0;
-    }
-
-    .main-content {
-        grid-column: 1;
-        padding: 2rem 1.5rem;
-    }
-
-    .section {
-        min-height: auto;
-        padding: 3rem 0;
-    }
-
-    .section__number {
-        font-size: 4rem;
-    }
-
-    .section__heading {
-        font-size: 1.75rem;
-    }
-
-    .work-grid {
-        gap: 3rem;
-    }
-
-    .lead {
-        font-size: 1.25rem;
-    }
-
-    .theme-toggle {
-        top: 1rem;
-        right: 1rem;
-        font-size: 0.75rem;
-        padding: 0.5rem 0.75rem;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-    .work-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
 
     *,
     *::before,
@@ -577,7 +602,6 @@ button:focus-visible {
         transition-duration: 0.01ms !important;
     }
 
-    /* Completely disable SVG animations for reduced motion */
     .svg-rotate-slow,
     .svg-rotate-reverse {
         animation: none !important;
